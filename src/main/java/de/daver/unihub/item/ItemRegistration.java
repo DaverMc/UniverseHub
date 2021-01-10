@@ -16,24 +16,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Items implements Listener {
+public class ItemRegistration implements Listener {
 
     @Getter
-    private final Map<Integer,ItemBuilder> interactionItems;
+    private final Map<String,ItemBuilder> interactionItems;
 
-    public Items(){
+    public ItemRegistration(){
         this.interactionItems = new HashMap<>();
+        this.init();
     }
 
     private void init(){
         for(int i = 0 ; i < 16; i++){
-            interactionItems.put(i, new ItemBuilder(Material.STAINED_GLASS_PANE, " ", i));
+            interactionItems.put("BORDER_ITEM_" + i, new ItemBuilder(Material.STAINED_GLASS_PANE, " ", i));
         }
-        interactionItems.put(16, new ItemBuilder(Material.SKULL_ITEM, "§6\u21E8 Page", 3)
-                .setHeadTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjMyY2E2NjA1NmI3Mjg2M2U5OGY3ZjMyYmQ3ZDk0YzdhMGQ3OTZhZjY5MWM5YWMzYTkxMzYzMzEzNTIyODhmOSJ9fX0="));
-        interactionItems.put(17, new ItemBuilder(Material.SKULL_ITEM, "§6Page \u21E6", 3)
-                .setHeadTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODY5NzFkZDg4MWRiYWY0ZmQ2YmNhYTkzNjE0NDkzYzYxMmY4Njk2NDFlZDU5ZDFjOTM2M2EzNjY2YTVmYTYifX19"));
-        interactionItems.put(18, new ItemBuilder(Material.BARRIER, "§cBack"));
     }
 
     private ItemStack getItem(int color){
